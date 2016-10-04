@@ -16,6 +16,11 @@ RUN printf 'opt_in: false\ntimestamp: 0.0\n' > ~/.appcfg_nag
 # configure the PATH to make the SDK tools available
 ENV PATH $PATH:/appengine/go_appengine
 
+ENV GO_VERSION "1.6.2"
+
+RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz
+ENV PATH $PATH:/usr/local/go/bin
+
 # configure GOPATH
 RUN mkdir -p /go
 ENV GOPATH /go
