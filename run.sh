@@ -15,6 +15,9 @@ for i in "${!APPS[@]}"; do
     # making it compatible with the docker container, which uses the GOPATH
     # root as it's working directory.
     tmp=${tmp#$GOPATH/}
+    # Ensure that the user-specified path exists.
+    [ -e "$GOPATH/$tmp" ] || (echo "'\$GOPATH/$tmp' must exist"; exit 1)
+    # Modify the input array with the new value.
     APPS[$i]=$tmp;
 done
 
