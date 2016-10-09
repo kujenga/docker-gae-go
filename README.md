@@ -14,18 +14,21 @@ Pull the image with:
 docker pull kujenga/docker-gae-go
 ```
 
-You can then run apps with a command similar to the following, where `APPS` is an array of paths starting at `$GOPATH` to the directories containing appengine applications, allowing for an arbitrary number of modules to be run at once.
+Included in this repository is a script, `run.sh`, which can be used to run the container in conjunction with App Engine apps living within your local `GOPATH`.
+
+You can then run apps with a command similar to the following, where the `run.sh` script is living somewhere in your `GOPATH`, and the arguments passed into it are the relative paths of App Engine applications, allowing for an arbitrary number of modules to be run at once.
+
+For example, if the `run.sh` script lives at `$GOPATH/src/github.com/run.sh` and you want to run three app engine applications within the `myorg` organization, you would use the following command.
 
 ```bash
-docker run \
-	--rm \
-	-p 8000:8000 \
-	-p 8080-8090:8080-8090 \
-	-v $GOPATH:/go \
-	kujenga/docker-gae-go \
-	dev_appserver.py \
-	"${APPS[@]}"
+./run.sh \
+    myorg/app1/default/app.yaml \
+    myorg/app1/worker/app.yaml \
+    myorg/app2/app.yaml
 ```
+
+### Note:
+I found the `--host='0.0.0.0'` flag to be required, since it doesn't seem to be possible to connect to anything listing just on local ports within the Docker container. Additionally, at the current time I'm not able to conenct to the admin console from `localhost` outside of the container
 
 ## References
 
