@@ -24,6 +24,12 @@ done
 echo "running apps:"
 printf '%s\n' "${APPS[@]}"
 
+# NOTE: I found the `--host='0.0.0.0'` flag to be required, since it
+# doesn't seem to be possible to connect to anything listing just on
+# local ports within the Docker container. Additionally, at the current
+# time I'm not able to conenct to the admin console from `localhost`
+# outside of the container.
+
 docker run \
     --rm \
     -p 8000:8000 \
