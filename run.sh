@@ -26,9 +26,7 @@ printf '%s\n' "${APPS[@]}"
 
 # NOTE: I found the `--host='0.0.0.0'` flag to be required, since it
 # doesn't seem to be possible to connect to anything listing just on
-# local ports within the Docker container. Additionally, at the current
-# time I'm not able to conenct to the admin console from `localhost`
-# outside of the container.
+# local ports within the Docker container.
 
 docker run \
     --rm \
@@ -38,6 +36,7 @@ docker run \
     kujenga/docker-gae-go \
     dev_appserver.py \
     --host='0.0.0.0' \
+    --admin_host='0.0.0.0' \
     --application="$PROJ" \
     --log_level="$LOG_LVL" \
     --dev_appserver_log_level="$LOG_LVL" \
