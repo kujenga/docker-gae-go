@@ -1,6 +1,6 @@
 # Docker Container for the Google App Engine Go SDK
 
-[![Docker Automated build](https://img.shields.io/docker/automated/kujenga/docker-gae-go.svg?maxAge=2592000)]()
+[![Docker Automated build](https://img.shields.io/docker/automated/kujenga/docker-gae-go.svg?maxAge=2592000)](https://hub.docker.com/r/kujenga/docker-gae-go/)
 
 The release of macOS Sierra broke the version of Go used by the most recent App Engine SDKs, as [is being discussed](https://groups.google.com/forum/#!topic/google-appengine-go/4AKjwr5d5a8) in the [google-appengine-go](https://groups.google.com/forum/#!forum/google-appengine-go) Google Group.
 
